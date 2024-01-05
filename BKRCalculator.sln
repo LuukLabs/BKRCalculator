@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BKRCalculator", "BKRCalcula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BKRCalculatorTest", "BKRCalculatorTest\BKRCalculatorTest.csproj", "{1C9D03F8-2CFD-4AF9-812A-9EBD7C497F76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BKRCalculatorApi", "BKRCalculatorApi\BKRCalculatorApi.csproj", "{4F0B5B4E-E8C6-4B40-9AA2-E38C46747947}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1C9D03F8-2CFD-4AF9-812A-9EBD7C497F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9D03F8-2CFD-4AF9-812A-9EBD7C497F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9D03F8-2CFD-4AF9-812A-9EBD7C497F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0B5B4E-E8C6-4B40-9AA2-E38C46747947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0B5B4E-E8C6-4B40-9AA2-E38C46747947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0B5B4E-E8C6-4B40-9AA2-E38C46747947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0B5B4E-E8C6-4B40-9AA2-E38C46747947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
