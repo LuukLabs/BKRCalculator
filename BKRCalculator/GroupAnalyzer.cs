@@ -1,9 +1,9 @@
 ﻿namespace KDVManager.BKRCalculator;
-public class BKRCalc
+public class GroupAnalyzer
 {
     private List<AgeGroupRule> ageGroupRules;
 
-    public BKRCalc()
+    public GroupAnalyzer()
     {
         var ageGroupRulesFactory = new AgeGroupRulesFactory();
         ageGroupRules = ageGroupRulesFactory.BuildAgeGroupRules();
@@ -32,7 +32,7 @@ public class BKRCalc
 
         return ageRange.GetProfessionals(childrenCounts);
     }
-    public bool TryAllCombinationsWithOneChildLess(AgeGroupCounts childrenCounts, int original)
+    private bool TryAllCombinationsWithOneChildLess(AgeGroupCounts childrenCounts, int original)
     {
         var ages = childrenCounts.GetAges;
 

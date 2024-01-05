@@ -7,7 +7,7 @@ BKRCalculator is a C# library that calculates the number of professionals needed
 To use BKRCalculator in your project, you can add it as a package from GitHub Packages using the following command:
 
 ```bash
-$ dotnet add package BKRCalculator --version 0.1.1
+$ dotnet add package BKRCalculator --version 0.2.0
 ```
 
 ## Overview
@@ -17,13 +17,13 @@ The BKRCalculator library includes classes for managing age group counts, and ca
 ## Features
 
 - **AgeGroupCounts:** Track counts of children in different age groups.
-- **BKRCalc:** Calculate the required number of professionals based on age group counts.
+- **GroupAnalyzer:** Calculate the required number of professionals based on age group counts.
 
 ## Getting Started
 To use the BKRCalculator library, follow these steps:
-- Create instances of AgeGroupCounts, and BKRCalc.
+- Create instances of AgeGroupCounts, and GroupAnalyzer.
 - Set counts for different age groups using AgeGroupCounts.
-- Use BKRCalc to calculate the required number of professionals based on age group counts and constraints.
+- Use GroupAnalyzer to calculate the required number of professionals based on age group counts and constraints.
 
 ```csharp
 // Example Usage
@@ -32,8 +32,8 @@ ageGroupCounts.Age1Count = 5;
 ageGroupCounts.Age2Count = 8;
 ageGroupCounts.Age3Count = 3;
 
-var bkrCalculator = new BKRCalc();
-int calculatedProfessionals = bkrCalculator.CalculateBKR(ageGroupCounts);
+var groupAnalyzer = new GroupAnaylyzer();
+int calculatedProfessionals = groupAnalyzer.CalculateBKR(ageGroupCounts);
 Console.WriteLine($"Calculated number of professionals: {calculatedProfessionals}");
 ```
 

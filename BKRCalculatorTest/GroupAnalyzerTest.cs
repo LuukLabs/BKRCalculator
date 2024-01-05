@@ -3,13 +3,13 @@ using KDVManager.BKRCalculator;
 namespace KDVManager.BKRCalculatorTest;
 
 [TestClass]
-public class BKRCalculatorTest
+public class GroupAnalyzerTest
 {
     [TestMethod]
     public void TestScenario2()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         AgeGroupCounts childrenCountByAge = new AgeGroupCounts
         {
@@ -19,7 +19,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCountByAge);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCountByAge);
 
         // Assert
         double expectedBKR = 4;
@@ -31,7 +31,7 @@ public class BKRCalculatorTest
     public void TestScenario3()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         AgeGroupCounts childrenCountByAge = new AgeGroupCounts
         {
@@ -42,7 +42,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCountByAge);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCountByAge);
 
         // Assert
         double expectedBKR = 4;
@@ -54,7 +54,7 @@ public class BKRCalculatorTest
     public void TestScenario4()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         var childrenCounts = new AgeGroupCounts
         {
@@ -65,7 +65,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCounts);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCounts);
 
         // Assert
         double expectedBKR = 3;
@@ -77,7 +77,7 @@ public class BKRCalculatorTest
     public void TestScenario5()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         var childrenCounts = new AgeGroupCounts
         {
@@ -88,7 +88,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCounts);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCounts);
 
         // Assert
         double expectedBKR = 2;
@@ -100,7 +100,7 @@ public class BKRCalculatorTest
     public void TestScenario6()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         var childrenCounts = new AgeGroupCounts
         {
@@ -111,7 +111,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCounts);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCounts);
 
         // Assert
         double expectedBKR = 2;
@@ -123,7 +123,7 @@ public class BKRCalculatorTest
     public void TestScenario7()
     {
         // Arrange
-        BKRCalc bkrCalculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         var childrenCounts = new AgeGroupCounts
         {
@@ -134,7 +134,7 @@ public class BKRCalculatorTest
         };
 
         // Act
-        double actualBKR = bkrCalculator.CalculateBKR(childrenCounts);
+        double actualBKR = groupAnalyzer.CalculateBKR(childrenCounts);
 
         // Assert
         double expectedBKR = 3;
@@ -145,7 +145,7 @@ public class BKRCalculatorTest
     [TestMethod]
     public void TestCalculateBKRFromCounts_AllCombinations()
     {
-        BKRCalc calculator = new BKRCalc();
+        GroupAnalyzer groupAnalyzer = new GroupAnalyzer();
 
         for (int count0 = 0; count0 <= 16; count0++)
         {
@@ -170,7 +170,7 @@ public class BKRCalculatorTest
 
                         try
                         {
-                            double actualBKR = calculator.CalculateBKR(childrenCountByAge);
+                            double actualBKR = groupAnalyzer.CalculateBKR(childrenCountByAge);
                             Assert.IsTrue(actualBKR <= 4, $"BKR {actualBKR} exceeds 4 for counts: {count0}, {count1}, {count2}, {count3}");
                         }
                         catch (Exception ex)
