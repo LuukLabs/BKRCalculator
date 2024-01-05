@@ -7,7 +7,7 @@ BKRCalculator is a C# library that calculates the number of professionals needed
 To use BKRCalculator in your project, you can add it as a package from GitHub Packages using the following command:
 
 ```bash
-$ dotnet add package BKRCalculator --version 1.0.0
+$ dotnet add package BKRCalculator --version 0.1.1
 ```
 
 ## Overview
