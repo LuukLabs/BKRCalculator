@@ -1,6 +1,6 @@
 namespace KDVManager.BKRCalculator;
 
-public class AgeGroupRulesFactory
+internal class AgeGroupRulesFactory
 {
     public List<AgeGroupRule> BuildAgeGroupRules()
     {

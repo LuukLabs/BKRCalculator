@@ -1,13 +1,13 @@
 namespace KDVManager.BKRCalculator;
 
-public class AgeGroupRule
+internal class AgeGroupRule
 {
     public int MinAge { get; }
     public int MaxAge { get; }
     public int MaxChildren { get; }
     public int MinProfessionals { get; }
     public List<AgeGroupRuleConstraint> Constraints { get; }
-    public AgeGroupRule(int minAge, int maxAge, int minProfessionals, int maxChildren, List<AgeGroupRuleConstraint> constraints = null)
+    public AgeGroupRule(int minAge, int maxAge, int minProfessionals, int maxChildren, List<AgeGroupRuleConstraint>? constraints = null)
     {
         MinAge = minAge;
         MaxAge = maxAge;
