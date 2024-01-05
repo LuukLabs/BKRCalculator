@@ -9,28 +9,27 @@ public class GroupAnalyzer
         ageGroupRules = ageGroupRulesFactory.BuildAgeGroupRules();
     }
 
-    public int CalculateBKR(AgeGroupCounts childrenCounts)
+    public GroupAnalysisResult CalculateBKR(AgeGroupCounts childrenCounts)
     {
         // Validate counts
         if (childrenCounts.TotalCount <= 0)
         {
-            return 0;
+            return new GroupAnalysisResult(childrenCounts.TotalCount, true, 0);
         }
 
         // Find ageRange
         var ageRange = ageGroupRules.FirstOrDefault(ar => ar.MeetsConstraint(childrenCounts));
         if (ageRange == null)
         {
-            // Log or handle the case where ageRange is null if needed
-            return -1; // Fallback to 0
+            return new GroupAnalysisResult(childrenCounts.TotalCount, false, -1);
         }
 
         if (TryAllCombinationsWithOneChildLess(childrenCounts, ageRange.GetProfessionals(childrenCounts)))
         {
-            return ageRange.GetProfessionals(childrenCounts) + 1;
+            return new GroupAnalysisResult(childrenCounts.TotalCount, true, ageRange.GetProfessionals(childrenCounts) + 1);
         }
 
-        return ageRange.GetProfessionals(childrenCounts);
+        return new GroupAnalysisResult(childrenCounts.TotalCount, true, ageRange.GetProfessionals(childrenCounts));
     }
     private bool TryAllCombinationsWithOneChildLess(AgeGroupCounts childrenCounts, int original)
     {
