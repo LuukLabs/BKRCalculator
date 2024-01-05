@@ -1,0 +1,23 @@
+name: Release Docker Image
+
+on:
+  release:
+    types: [created]
+  push:
+
+jobs:
+  build-and-push-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: "BKRCalculatorApi"
+          push: true
+          tags: LuukLabs/bkr-calculator-api:latest, LuukLabs/bkr-calculator-api:v0.2.1
