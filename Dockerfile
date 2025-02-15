@@ -1,5 +1,5 @@
 # Use the official .NET SDK image as a base image
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build-env
 
 # Set the working directory inside the container
 WORKDIR /app
