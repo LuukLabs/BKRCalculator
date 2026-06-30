@@ -38,12 +38,26 @@ internal class AgeGroupRule
         return MinProfessionals;
     }
 
+    public AppliedRule ToAppliedRule()
+    {
+        var constraints = Constraints
+            .Select(c => new AppliedRuleConstraint(c.MinAge, c.MaxAge, c.MaxChildren))
+            .ToList();
+
+        var ratios = Enumerable.Range(MinAge, MaxAge - MinAge)
+            .Where(BkrRatios.Has)
+            .Select(age => new AppliedRatio(age, BkrRatios.For(age)))
+            .ToList();
+
+        return new AppliedRule(MinAge, MaxAge, MaxChildren, MinProfessionals, constraints, ratios);
+    }
+
     private int CalculateBKRFromCounts(AgeGroupCounts childrenCountByAge)
     {
-        double A = childrenCountByAge.Age0Count / 3.0;
-        double B = childrenCountByAge.Age1Count / 5.0;
-        double C = childrenCountByAge.Age2Count / 6.0;
-        double D = childrenCountByAge.Age3Count / 8.0;
+        double A = childrenCountByAge.Age0Count / (double)BkrRatios.For(0);
+        double B = childrenCountByAge.Age1Count / (double)BkrRatios.For(1);
+        double C = childrenCountByAge.Age2Count / (double)BkrRatios.For(2);
+        double D = childrenCountByAge.Age3Count / (double)BkrRatios.For(3);
 
         return (int)Math.Ceiling(A + ((B + C + D) / 1.2));
     }
