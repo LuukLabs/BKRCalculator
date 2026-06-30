@@ -24,12 +24,20 @@ public class GroupAnalyzer
             return new GroupAnalysisResult(childrenCounts.TotalCount, false, -1);
         }
 
-        if (TryAllCombinationsWithOneChildLess(childrenCounts, ageRange.GetProfessionals(childrenCounts)))
+        var appliedRule = ageRange.ToAppliedRule();
+        var professionals = ageRange.GetProfessionals(childrenCounts);
+
+        // The minimum for the group size, or the weighted per-age ratio when it requires more.
+        var basis = professionals > ageRange.MinProfessionals
+            ? ProfessionalsBasis.RatioCalculation
+            : ProfessionalsBasis.GroupSizeMinimum;
+
+        if (TryAllCombinationsWithOneChildLess(childrenCounts, professionals))
         {
-            return new GroupAnalysisResult(childrenCounts.TotalCount, true, ageRange.GetProfessionals(childrenCounts) + 1);
+            return new GroupAnalysisResult(childrenCounts.TotalCount, true, professionals + 1, appliedRule, ProfessionalsBasis.OneChildLessSafeguard);
         }
 
-        return new GroupAnalysisResult(childrenCounts.TotalCount, true, ageRange.GetProfessionals(childrenCounts));
+        return new GroupAnalysisResult(childrenCounts.TotalCount, true, professionals, appliedRule, basis);
     }
     private bool TryAllCombinationsWithOneChildLess(AgeGroupCounts childrenCounts, int original)
     {
