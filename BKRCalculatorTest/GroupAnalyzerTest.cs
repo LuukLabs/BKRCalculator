@@ -51,7 +51,7 @@ public class GroupAnalyzerTest
         Assert.AreEqual(4, result.AppliedRule.MinProfessionals);
 
         // Sub-cap: at most 8 children aged 0-1.
-        Assert.AreEqual(1, result.AppliedRule.Constraints.Count);
+        Assert.HasCount(1, result.AppliedRule.Constraints);
         var cap = result.AppliedRule.Constraints[0];
         Assert.AreEqual(0, cap.MinAge);
         Assert.AreEqual(1, cap.MaxAge);
